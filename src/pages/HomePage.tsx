@@ -20,6 +20,7 @@ function HomePage() {
     const dispatch = useDispatch();
     const isMounted = useRef(false); //проверка, был ли первый рендер
 
+
     useEffect(() => {
         if(isMounted.current) {
             const json = JSON.stringify(items);
@@ -31,10 +32,9 @@ function HomePage() {
 
         setTimeout(() => {
             dispatch(isLoaded());
-        }, 2500);
+        }, 500);
 
     }, [items])
-
     
 
     const openForm = () => {
@@ -46,8 +46,6 @@ function HomePage() {
     let products = items
     .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLocaleLowerCase()))
     .map((item: any) =>  <Item key={item.id} {...item}/> )
-
-
 
     return (
        <div className="content">

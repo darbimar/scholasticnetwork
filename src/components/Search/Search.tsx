@@ -1,36 +1,37 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import'./Search.scss';
 import { useDispatch } from 'react-redux';
 import img from './../../assets/search.svg';
 import { setSearchValue } from '../../store/slices/searchSlice';
 import { isLoaded, isLoading } from '../../store/slices/loadSlice';
+import { useSearchParams } from 'react-router-dom';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState('');
+  let [searchParams, setSearchParams] = useSearchParams();
+  const newSearch = searchParams.get('items') || "";
 
-  const updateSearchValue  = (value: string) => {
-    dispatch(setSearchValue(value));
-  }
+  useEffect(()=> {
+    dispatch(setSearchValue(newSearch));
+  }, [newSearch])
+
 
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    updateSearchValue(e.target.value);
-    dispatch(isLoading());
+    setSearchParams({items: e.target.value})
 
+    dispatch(isLoading());
     setTimeout(() => {
         dispatch(isLoaded());
-    }, 2500);
+    }, 500);
   };
-
 
   return (
     <div className='search'>
 
       <img src={img} alt='search' className='search__icon' />
       <input
-        value={value}
+        value={newSearch}
         className='search__input'
         placeholder="Search"
         onChange={onChangeInput}
