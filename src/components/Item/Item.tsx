@@ -1,17 +1,21 @@
 import './Item.scss';
 import logo from './../../assets/item.svg';
 import bin from './../../assets/bin.svg';
-import { useDispatch} from 'react-redux';
-import { editForm, showForm } from '../../store/slices/modalSlice';
-import { deleteItem} from '../../store/slices/itemsSlice';
+import { useDispatch, useSelector} from 'react-redux';
+import { showEditForm, showForm, showDeleteModal } from '../../store/slices/modalSlice';
 import { Link } from 'react-router-dom';
 import { correctItem } from '../../store/slices/editSlice';
+import ConfirmModal from '../ConfirmModal/ConfirmModal';
+import { RootState } from '../../store';
 
 type ItemProps = {
     id: string, name: string, price: string, description: string
   }
 
 const Item: React.FC<ItemProps> =({id, name, price, description})  => {
+
+    const { isDelete } = useSelector((state: RootState) => state.modal);
+
 
     const dispatch = useDispatch();
 
@@ -29,8 +33,12 @@ const Item: React.FC<ItemProps> =({id, name, price, description})  => {
             id, name, price, description
         };
         dispatch(showForm());
-        dispatch(editForm());
+        dispatch(showEditForm());
         dispatch(correctItem(item))
+    }
+
+    const onDelete = () => {
+        dispatch(showDeleteModal());
     }
 
     return (
@@ -47,10 +55,11 @@ const Item: React.FC<ItemProps> =({id, name, price, description})  => {
                 <div className="item__price">${price}</div>
                 <div className="item__correct">
                     <button className="button button-small" onClick={editData}>EDIT</button>
-                    <button className='button-bin'><img src={bin} alt="bin" onClick={()=>dispatch(deleteItem(id))}/></button>
+                    <button className='button-bin'><img src={bin} alt="bin" onClick={onDelete}/></button>
                 </div>
                 
             </div>
+            {isDelete && <ConfirmModal id={id}/>}
         </div>
     );
 }

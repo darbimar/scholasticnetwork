@@ -3,7 +3,7 @@ import Form from '../components/Form/Form';
 import { RootState } from "../store";
 import Item from "../components/Item/Item";
 import { useEffect, useRef } from "react";
-import { createForm, showForm } from "../store/slices/modalSlice";
+import { hideEditForm, showForm } from "../store/slices/modalSlice";
 import FormEdit from "../components/Form/FormEdit";
 import Loading from "../components/Loading/Loading";
 import { isLoading } from "../store/slices/loadSlice";
@@ -13,13 +13,11 @@ import NotFound from "../components/NotFound/NotFound";
 function HomePage() {
 
     const items = useSelector((state:RootState) => state.item.items);
-    const isShow = useSelector ((state: RootState) => state.modal.isShow);
-    const isEdit = useSelector ((state: RootState) => state.modal.isEdit);
+    const {isShow, isEdit } = useSelector ((state: RootState) => state.modal);
     const searchValue = useSelector((state:RootState) => state.search.searchValue);
     const loading = useSelector((state:RootState) => state.loading.loading);
     const dispatch = useDispatch();
     const isMounted = useRef(false); //проверка, был ли первый рендер
-
 
     useEffect(() => {
         if(isMounted.current) {
@@ -39,7 +37,7 @@ function HomePage() {
 
     const openForm = () => {
         dispatch(showForm());
-        dispatch(createForm())
+        dispatch(hideEditForm())
     }
 
 

@@ -3,12 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface ModalState {
     isShow: boolean;
-    isEdit: boolean
+    isEdit: boolean;
+    isDelete: boolean
 }
 
 const initialState: ModalState = {
     isShow: false,
-    isEdit:false
+    isEdit:false, 
+    isDelete: false
 }
 
 
@@ -22,16 +24,23 @@ export const modalSlice = createSlice({
         hideForm(state) {
             state.isShow = false;
         },
-        editForm(state) {
+        showEditForm(state) {
             state.isEdit = true;
         },
-        createForm(state) {
+        hideEditForm(state) {
             state.isEdit = false;
-        }
+        },
+        showDeleteModal(state) {
+            state.isDelete = true;
+        },
+        hideDeleteModal(state) {
+            state.isDelete = false;
+        },
+
     }
 })
 
 
-export const {showForm, hideForm, editForm, createForm} = modalSlice.actions;
+export const {showForm, hideForm, showEditForm, hideEditForm, showDeleteModal, hideDeleteModal} = modalSlice.actions;
 
 export default modalSlice.reducer;

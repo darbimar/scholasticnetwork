@@ -4,10 +4,13 @@ import {  editItem } from "../../store/slices/itemsSlice";
 import './Form.scss';
 import item from './../../assets/item.svg';
 import close from './../../assets/close.svg';
-import { hideForm } from "../../store/slices/modalSlice";
+import { hideEditForm, hideForm } from "../../store/slices/modalSlice";
 import { RootState } from "../../store";
+import { updateLocalStorage } from "../../utils/updateItemsinLS";
+import { getItemsFromLS } from "../../utils/getItemsFromLS";
 
 const  FormEdit  = () => {
+  const items = useSelector((state:RootState) => state.item.items);
 
   const {id, name, description, price} = useSelector((state: RootState) => state.edit)
   const [editName, setEditName] = useState(name);
@@ -17,17 +20,23 @@ const  FormEdit  = () => {
 
 
   const handleSubmit = (e: any) => {
-
     const item: any = {
       id, editName, editPrice, editDescription
     };
     e.preventDefault();
     dispatch(editItem(item));
     dispatch(hideForm());
+    dispatch(hideEditForm());
     setEditName('');
     setEditPrice(0);
     setEditDescription('');
+    updateLocalStorage(items);
   };
+
+  const closeForm = () => {
+    dispatch(hideForm());
+    dispatch(hideEditForm());
+  }
 
 
   return (
@@ -35,7 +44,7 @@ const  FormEdit  = () => {
       <div className="content">
         <div className="form__top">
           <div className="form__title">Edit item</div>
-          <img src={close} alt="close" className="form__close" onClick={()=>dispatch(hideForm())}/>
+          <img src={close} alt="close" className="form__close" onClick={closeForm}/>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form__main">
@@ -69,7 +78,7 @@ const  FormEdit  = () => {
             onChange={(e) => setEditDescription(e.target.value)}>
               Description
             </textarea>
-          <button className="button" type="submit">CREATE ITEM</button>
+          <button className="button" type="submit">EDIT ITEM</button>
         </form>
         </div>
     </div>

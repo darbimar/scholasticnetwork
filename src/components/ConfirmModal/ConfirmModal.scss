@@ -1,0 +1,41 @@
+.confirm {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content {
+        background-color: #fff;
+        z-index: 100;
+        width: 416px;
+        height: 211px;
+        padding: 30px;
+        box-shadow: 0px 2px 12px rgba(12, 82, 118, 0.13);
+        border-radius: 6px;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    &__subtitle {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        color: #333333;
+        margin-top: 13px;
+    }
+
+    &__buttons {
+        margin-top: 30px;
+        display: flex;
+        gap: 14px;
+    }
+}
