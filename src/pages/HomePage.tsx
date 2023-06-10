@@ -2,7 +2,7 @@ import { useSelector,useDispatch } from "react-redux";
 import Form from '../components/Form/Form';
 import { RootState } from "../store";
 import Item from "../components/Item/Item";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { hideEditForm, showForm } from "../store/slices/modalSlice";
 import FormEdit from "../components/Form/FormEdit";
 import Loading from "../components/Loading/Loading";
@@ -17,15 +17,8 @@ function HomePage() {
     const searchValue = useSelector((state:RootState) => state.search.searchValue);
     const loading = useSelector((state:RootState) => state.loading.loading);
     const dispatch = useDispatch();
-    const isMounted = useRef(false); //проверка, был ли первый рендер
 
     useEffect(() => {
-        if(isMounted.current) {
-            const json = JSON.stringify(items);
-            localStorage.setItem('list', json);
-        }
-        isMounted.current = true;
-
         dispatch(isLoading());
 
         setTimeout(() => {
@@ -42,7 +35,7 @@ function HomePage() {
 
 
     let products = items
-    .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLocaleLowerCase()))
+    .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase()))
     .map((item: any) =>  <Item key={item.id} {...item}/> )
 
     return (

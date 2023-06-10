@@ -6,11 +6,9 @@ import item from './../../assets/item.svg';
 import close from './../../assets/close.svg';
 import { hideEditForm, hideForm } from "../../store/slices/modalSlice";
 import { RootState } from "../../store";
-import { updateLocalStorage } from "../../utils/updateItemsinLS";
-import { getItemsFromLS } from "../../utils/getItemsFromLS";
+
 
 const  FormEdit  = () => {
-  const items = useSelector((state:RootState) => state.item.items);
 
   const {id, name, description, price} = useSelector((state: RootState) => state.edit)
   const [editName, setEditName] = useState(name);
@@ -30,7 +28,6 @@ const  FormEdit  = () => {
     setEditName('');
     setEditPrice(0);
     setEditDescription('');
-    updateLocalStorage(items);
   };
 
   const closeForm = () => {
@@ -61,7 +58,7 @@ const  FormEdit  = () => {
               />
               <input
                 className="form__input"
-                type="text"
+                type="number"
                 value={editPrice}
                 min="1"
                 placeholder="Price"

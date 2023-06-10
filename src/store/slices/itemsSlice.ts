@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getItemsFromLS } from "../../utils/getItemsFromLS"
 
 
 export type ListItem = {
@@ -16,7 +15,7 @@ interface IItems  {
 
 
 const initialState: IItems = {
-    items: getItemsFromLS()
+    items: []
 }
 
 export const itemsSlice = createSlice({
@@ -27,7 +26,7 @@ export const itemsSlice = createSlice({
             state.items = [...state.items, action.payload];
         },
         editItem(state, action) {
-        const { id, editName, editPrice, editDescription } = action.payload;
+        const { editName, editPrice, editDescription } = action.payload;
         let name = editName;
         let price = editPrice;
         let description = editDescription;

@@ -43,7 +43,9 @@ const Item: React.FC<ItemProps> =({id, name, price, description})  => {
 
     return (
         <div className='item'>
-            <div className="item-image"><img src={logo} alt="item" /></div>  
+            <Link to={`/item/${id}`}>
+                <div className="item-image"><img src={logo} alt="item" /></div>  
+            </Link>
             <div className="item__text">
             <Link to={`/item/${id}`}>
                 <div className="item__title">{name}</div>
