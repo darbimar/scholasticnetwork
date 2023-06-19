@@ -1,54 +1,51 @@
-import { createSlice } from "@reduxjs/toolkit"
-
+import { createSlice } from '@reduxjs/toolkit';
 
 export type ListItem = {
-    id: string,
-    name: string, 
-    price: string,
-    description: string
+  id: string;
+  name: string;
+  price: string;
+  description: string;
+};
+
+interface IItems {
+  items: ListItem[];
 }
-
-
-interface IItems  {
-    items: ListItem[]
-}
-
 
 const initialState: IItems = {
-    items: []
-}
+  items: [],
+};
 
 export const itemsSlice = createSlice({
-    name: 'item',
-    initialState,
-    reducers: {
-        addItem(state, action) {
-            state.items = [...state.items, action.payload];
-        },
-        editItem(state, action) {
-        const { editName, editPrice, editDescription } = action.payload;
-        let name = editName;
-        let price = editPrice;
-        let description = editDescription;
+  name: 'item',
+  initialState,
+  reducers: {
+    addItem(state, action) {
+      state.items = [...state.items, action.payload];
+    },
+    editItem(state, action) {
+      const { editName, editPrice, editDescription } = action.payload;
+      let name = editName;
+      let price = editPrice;
+      let description = editDescription;
 
-        state.items = state.items.map(item => {
-            if(item.id !== action.payload.id){
-                return item;
-            }
-            return {
-            ...item, name, price, description
-            };
-        });
-        },
-        deleteItem(state, action) {
-            state.items = state.items.filter(obj => obj.id !== action.payload)
+      state.items = state.items.map((item) => {
+        if (item.id !== action.payload.id) {
+          return item;
         }
+        return {
+          ...item,
+          name,
+          price,
+          description,
+        };
+      });
+    },
+    deleteItem(state, action) {
+      state.items = state.items.filter((obj) => obj.id !== action.payload);
+    },
+  },
+});
 
-    }
-})
-
-export const {addItem, editItem, deleteItem} = itemsSlice.actions;
+export const { addItem, editItem, deleteItem } = itemsSlice.actions;
 
 export default itemsSlice.reducer;
-
-

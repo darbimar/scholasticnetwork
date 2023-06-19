@@ -8,46 +8,43 @@ import ConfirmModal from '../components/ConfirmModal/ConfirmModal';
 import SingleItem from '../components/SingleItem/SingleItem';
 import NotFound from '../components/NotFound/NotFound';
 
+const ItemPage = () => {
+  const { isEdit, isDelete } = useSelector((state: RootState) => state.modal);
 
-function ItemPage() {
+  const items = useSelector((state: RootState) => state.item.items);
+  const dispatch = useDispatch();
 
-    const { isEdit,isDelete } = useSelector ((state: RootState) => state.modal);
+  const { pathname } = useLocation();
 
+  const itemId = pathname.slice(6);
 
-    const items = useSelector((state:RootState) => state.item.items);
-    const dispatch = useDispatch();
+  const item = items.find((obj) => obj.id == itemId);
 
-    const { pathname } = useLocation();
+  const editData = () => {
+    dispatch(showForm());
+    dispatch(showEditForm());
+    dispatch(correctItem(item));
+  };
 
-    const itemId = pathname.slice(6);
+  const onDelete = () => {
+    dispatch(showDeleteModal());
+  };
 
-    const item = items.find((obj) =>  obj.id == itemId);
-
-    const editData = () => {
-        dispatch(showForm());
-        dispatch(showEditForm());
-        dispatch(correctItem(item));
-    }
-
-
-    const onDelete = () => {
-        dispatch(showDeleteModal());
-    }
-
-
-    return (
-        <div className="content">
-            <div className="container">
-                <div className="content__top content__top-single">
-                    <Link to="/"><button className="button button-white">&lt;  BACK</button></Link>
-                    <div className="content__title">Current item</div> 
-                </div>
-                {item ? <SingleItem editData={editData} onDelete={onDelete} item={item} /> : <NotFound/>}
-                {isEdit && <FormEdit />}
-                {isDelete && <ConfirmModal id={item?.id}/>}            
-             </div>
-        </div>  
-    );
-}
+  return (
+    <div className="content">
+      <div className="container">
+        <div className="content__top content__top-single">
+          <Link to="/">
+            <button className="button button-white">&lt; BACK</button>
+          </Link>
+          <div className="content__title">Current item</div>
+        </div>
+        {item ? <SingleItem editData={editData} onDelete={onDelete} item={item} /> : <NotFound />}
+        {isEdit && <FormEdit />}
+        {isDelete && <ConfirmModal id={item?.id} />}
+      </div>
+    </div>
+  );
+};
 
 export default ItemPage;

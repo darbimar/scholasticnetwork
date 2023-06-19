@@ -1,25 +1,25 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {  editItem } from "../../store/slices/itemsSlice";
-import './Form.scss';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { editItem } from '../../store/slices/itemsSlice';
+import { hideEditForm, hideForm } from '../../store/slices/modalSlice';
 import item from './../../assets/item.svg';
 import close from './../../assets/close.svg';
-import { hideEditForm, hideForm } from "../../store/slices/modalSlice";
-import { RootState } from "../../store";
+import './Form.scss';
 
-
-const  FormEdit  = () => {
-
-  const {id, name, description, price} = useSelector((state: RootState) => state.edit)
+const FormEdit = () => {
+  const { id, name, description, price } = useSelector((state: RootState) => state.edit);
   const [editName, setEditName] = useState(name);
   const [editPrice, setEditPrice] = useState<number | undefined>(price);
   const [editDescription, setEditDescription] = useState(description);
   const dispatch = useDispatch();
 
-
   const handleSubmit = (e: any) => {
     const item: any = {
-      id, editName, editPrice, editDescription
+      id,
+      editName,
+      editPrice,
+      editDescription,
     };
     e.preventDefault();
     dispatch(editItem(item));
@@ -33,19 +33,20 @@ const  FormEdit  = () => {
   const closeForm = () => {
     dispatch(hideForm());
     dispatch(hideEditForm());
-  }
-
+  };
 
   return (
     <div className="form">
       <div className="content">
         <div className="form__top">
           <div className="form__title">Edit item</div>
-          <img src={close} alt="close" className="form__close" onClick={closeForm}/>
+          <img src={close} className="form__close" alt="close" onClick={closeForm} />
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form__main">
-            <div className="item-image"><img src={item} alt="item" /></div>
+            <div className="item-image">
+              <img src={item} alt="item" />
+            </div>
             <div className="form__main-inputs">
               <input
                 className="form__input"
@@ -54,7 +55,7 @@ const  FormEdit  = () => {
                 maxLength={200}
                 placeholder="Name"
                 required
-                onChange={(e) => setEditName(e.target.value)}
+                onChange={(event) => setEditName(event.target.value)}
               />
               <input
                 className="form__input"
@@ -63,7 +64,7 @@ const  FormEdit  = () => {
                 min="1"
                 placeholder="Price"
                 required
-                onChange={(e) => setEditPrice(Number(e.target.value))}
+                onChange={(event) => setEditPrice(Number(event.target.value))}
               />
             </div>
           </div>
@@ -72,12 +73,14 @@ const  FormEdit  = () => {
             value={editDescription}
             maxLength={1000}
             required
-            onChange={(e) => setEditDescription(e.target.value)}>
-              Description
-            </textarea>
-          <button className="button" type="submit">EDIT ITEM</button>
+            onChange={(event) => setEditDescription(event.target.value)}>
+            Description
+          </textarea>
+          <button className="button" type="submit">
+            EDIT ITEM
+          </button>
         </form>
-        </div>
+      </div>
     </div>
   );
 };

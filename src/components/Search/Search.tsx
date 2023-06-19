@@ -1,43 +1,40 @@
-import { useEffect } from 'react';
-import'./Search.scss';
+import { ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import img from './../../assets/search.svg';
+import { useSearchParams } from 'react-router-dom';
 import { setSearchValue } from '../../store/slices/searchSlice';
 import { isLoaded, isLoading } from '../../store/slices/loadSlice';
-import { useSearchParams } from 'react-router-dom';
+import img from './../../assets/search.svg';
+import './Search.scss';
 
 const Search = () => {
   const dispatch = useDispatch();
-  let [searchParams, setSearchParams] = useSearchParams();
-  const newSearch = searchParams.get('items') || "";
+  const [searchParams, setSearchParams] = useSearchParams();
+  const newSearch = searchParams.get('items') || '';
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(setSearchValue(newSearch));
-  }, [newSearch])
+  }, [newSearch]);
 
-
-
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchParams({items: e.target.value})
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchParams({ items: event.target.value });
 
     dispatch(isLoading());
     setTimeout(() => {
-        dispatch(isLoaded());
+      dispatch(isLoaded());
     }, 500);
   };
 
   return (
-    <div className='search'>
-
-      <img src={img} alt='search' className='search__icon' />
+    <div className="search">
+      <img className="search__icon" src={img} alt="search" />
       <input
+        className="search__input"
         value={newSearch}
-        className='search__input'
         placeholder="Search"
-        onChange={onChangeInput}
+        onChange={onInputChange}
       />
     </div>
   );
-}
+};
 
 export default Search;

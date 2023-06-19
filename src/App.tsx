@@ -5,17 +5,15 @@ import ItemPage from './pages/ItemPage';
 import MainLayout from './MainLayout';
 import './App.scss';
 
-
-function App() {
+const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<MainLayout />}>
-        <Route path='' element={<HomePage/> }/>
-        <Route path='item/:id' element={<ItemPage />} />
+      <Route path="/" element={<MainLayout />}>
+        <Route path="" element={<HomePage />} />
+        <Route path="item/:id" element={<ItemPage />} />
       </Route>
-      
-    </Routes>     
-  )
-}
+    </Routes>
+  );
+};
 
 export default App;
