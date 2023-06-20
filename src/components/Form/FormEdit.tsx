@@ -40,12 +40,12 @@ const FormEdit = () => {
       <div className="content">
         <div className="form__top">
           <div className="form__title">Edit item</div>
-          <img src={close} className="form__close" alt="close" onClick={closeForm} />
+          <img src={close} className="form__close" alt="Close form" onClick={closeForm} />
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form__main">
-            <div className="item-image">
-              <img src={item} alt="item" />
+            <div className="item-image-wrapper">
+              <img className="item-image" src={item} alt="item" />
             </div>
             <div className="form__main-inputs">
               <input
@@ -69,7 +69,7 @@ const FormEdit = () => {
             </div>
           </div>
           <textarea
-            className="form__input form__input-big"
+            className="form__input form__input--big"
             value={editDescription}
             maxLength={1000}
             required

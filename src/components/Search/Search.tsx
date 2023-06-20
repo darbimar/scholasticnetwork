@@ -26,11 +26,12 @@ const Search = () => {
 
   return (
     <div className="search">
-      <img className="search__icon" src={img} alt="search" />
+      <img className="search__icon" src={img} alt="" />
       <input
         className="search__input"
         value={newSearch}
         placeholder="Search"
+        type="search"
         onChange={onInputChange}
       />
     </div>

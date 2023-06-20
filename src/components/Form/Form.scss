@@ -1,13 +1,13 @@
+@import '../../styles/mixins.scss';
+
 .form {
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 100vw;
-  height: 100vh;
+  @include flex-center;
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
 
   &__top {
     display: flex;
@@ -18,30 +18,32 @@
   &__title {
     font-weight: 600;
     font-size: 18px;
-    line-height: 25px;
+    line-height: 1.39;
+  }
+
+  &__close {
+    &:hover {
+      opacity: 0.5;
+    }
   }
 
   &__main {
+    @include flex-between;
     width: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     &-inputs {
-      width: 220px;
-      height: 100px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
-
+      width: 220px;
+      height: 100px;
     }
   }
 
   &__input {
-    padding: 11px 15px;
     width: 100%;
     height: 40px;
+    padding: 11px 15px;
     border: 1px solid #CCCCCC;
     border-radius: 6px;
 
@@ -49,20 +51,20 @@
       border: 2px solid #737373;
     }
 
-    &-big {
+    &--big {
+      vertical-align: top;
       margin: 30px 0;
       height: 180px;
-      vertical-align: top;
+      resize: none;
     }
   }
 
   .content {
     width: 416px;
     height: 479px;
+    padding: 30px;
     background: #FFFFFF;
     box-shadow: 0px 2px 12px rgba(12, 82, 118, 0.13);
     border-radius: 6px;
-    padding: 30px;
   }
-
 }

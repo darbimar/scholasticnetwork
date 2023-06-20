@@ -44,15 +44,17 @@ const Item: React.FC<ItemProps> = ({ id, name, price, description }) => {
     dispatch(showDeleteModal());
   };
 
+  const link = `/item/${id}`;
+
   return (
     <div className="item">
-      <Link to={`/item/${id}`}>
-        <div className="item-image">
-          <img src={logo} alt="item" />
+      <Link to={link}>
+        <div className="item-image-wrapper">
+          <img className="item-image" src={logo} alt="Go to item page" />
         </div>
       </Link>
       <div className="item__text">
-        <Link to={`/item/${id}`}>
+        <Link to={link}>
           <div className="item__title">{name}</div>
         </Link>
         <p>{description}</p>
@@ -61,11 +63,11 @@ const Item: React.FC<ItemProps> = ({ id, name, price, description }) => {
         <div className="item__id">ID: {id}</div>
         <div className="item__price">${price}</div>
         <div className="item__correct">
-          <button className="button button-small" onClick={editData}>
+          <button className="button button--small" type="button" onClick={editData}>
             EDIT
           </button>
-          <button className="button-bin">
-            <img src={bin} alt="bin" onClick={onDelete} />
+          <button className="button--bin" type="button" aria-label="Delete item">
+            <img src={bin} alt="Delete item" onClick={onDelete} title="Delete item" />
           </button>
         </div>
       </div>

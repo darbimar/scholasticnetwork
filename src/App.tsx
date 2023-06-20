@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ItemPage from './pages/ItemPage';
 import MainLayout from './MainLayout';
-import './App.scss';
+import './styles/globals.scss';
 
 const App = () => {
   return (

@@ -33,11 +33,13 @@ const ItemPage = () => {
   return (
     <div className="content">
       <div className="container">
-        <div className="content__top content__top-single">
+        <div className="content__top content__top--single">
           <Link to="/">
-            <button className="button button-white">&lt; BACK</button>
+            <button className="button button--white" type="button">
+              &lt; BACK
+            </button>
           </Link>
-          <div className="content__title">Current item</div>
+          <h1 className="content__title">Current item</h1>
         </div>
         {item ? <SingleItem editData={editData} onDelete={onDelete} item={item} /> : <NotFound />}
         {isEdit && <FormEdit />}

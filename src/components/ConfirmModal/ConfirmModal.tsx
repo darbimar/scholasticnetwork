@@ -21,10 +21,13 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({ id }) => {
         <div className="confirm__title">Are you sure you want to delete this item?</div>
         <div className="confirm__subtitle">You will not be able to restore it.</div>
         <div className="confirm__buttons">
-          <button className="button button-white" onClick={() => dispatch(hideDeleteModal())}>
+          <button
+            className="button button--white"
+            type="button"
+            onClick={() => dispatch(hideDeleteModal())}>
             CANCEL
           </button>
-          <button className="button" onClick={onDelete}>
+          <button className="button" type="button" onClick={onDelete}>
             DELETE ITEM
           </button>
         </div>

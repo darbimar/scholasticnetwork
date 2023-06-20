@@ -1,25 +1,26 @@
-.header {
-  border-bottom: 1px solid #EBEBEB;
-  position: relative;
+@import '../../styles/mixins.scss';
 
+.header {
+  position: relative;
+  border-bottom: 1px solid #EBEBEB;
 
   .container {
-    margin: auto;
+    @include flex-between;
     width: 1200px;
     height: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: auto;
     padding: 0 40px;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   &__logo {
-    font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
     font-size: 22px;
-    line-height: 36px;
+    line-height: 1.63;
     color: #A2A2A2;
   }
-
 }

@@ -37,14 +37,14 @@ const Form = () => {
           <img
             className="form__close"
             src={close}
-            alt="close"
+            alt="Close form"
             onClick={() => dispatch(hideForm())}
           />
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form__main">
-            <div className="item-image">
-              <img src={item} alt="item" />
+            <div className="item-image-wrapper">
+              <img className="item-image" src={item} alt="item" />
             </div>
             <div className="form__main-inputs">
               <input
@@ -68,7 +68,7 @@ const Form = () => {
             </div>
           </div>
           <textarea
-            className="form__input form__input-big"
+            className="form__input form__input--big"
             value={description}
             maxLength={1000}
             required

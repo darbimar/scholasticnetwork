@@ -30,7 +30,7 @@ const HomePage = () => {
     dispatch(hideEditForm());
   };
 
-  let products = items
+  const products = items
     .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase()))
     .map((item: any) => <Item key={item.id} {...item} />);
 
@@ -38,8 +38,8 @@ const HomePage = () => {
     <div className="content">
       <div className="container">
         <div className="content__top">
-          <div className="content__title">Items list</div>
-          <button className="button" onClick={openForm}>
+          <h1 className="content__title">Items list</h1>
+          <button className="button" type="button" onClick={openForm}>
             CREATE ITEM
           </button>
         </div>

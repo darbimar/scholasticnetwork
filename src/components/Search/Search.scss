@@ -1,15 +1,13 @@
 .search {
   position: relative;
-  width: 280px;
   height: 36px;
 
   &__icon {
-    height: 14px;
     position: absolute;
     top: 13px;
     left: 17px;
+    height: 14px;
   }
-
 
   &__input {
     width: 280px;
@@ -18,8 +16,7 @@
     border-radius: 6px;
     font-weight: 400;
     font-size: 14px;
-    line-height: 18px;
-
+    line-height: 1.29;
     color: #999999;
 
     &:focus {

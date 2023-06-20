@@ -19,10 +19,7 @@ export const editSlice = createSlice({
   initialState,
   reducers: {
     correctItem(state, action) {
-      state.id = action.payload.id;
-      state.name = action.payload.name;
-      state.price = action.payload.price;
-      state.description = action.payload.description;
+      return { ...state, ...action.payload };
     },
   },
 });
