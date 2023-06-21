@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { RootState } from '../store';
 import { correctItem } from '../store/slices/editSlice';
 import { showDeleteModal, showEditForm, showForm } from '../store/slices/modalSlice';
@@ -14,11 +14,9 @@ const ItemPage = () => {
   const items = useSelector((state: RootState) => state.item.items);
   const dispatch = useDispatch();
 
-  const { pathname } = useLocation();
+  const { id } = useParams();
 
-  const itemId = pathname.slice(6);
-
-  const item = items.find((obj) => obj.id == itemId);
+  const item = items.find((obj) => obj.id == id);
 
   const editData = () => {
     dispatch(showForm());

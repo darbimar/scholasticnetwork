@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../store/slices/itemsSlice';
 import { hideForm } from '../../store/slices/modalSlice';
+import Input from '../Input/Input';
 import item from './../../assets/item.svg';
 import close from './../../assets/close.svg';
 import './Form.scss';
@@ -47,7 +48,7 @@ const Form = () => {
               <img className="item-image" src={item} alt="item" />
             </div>
             <div className="form__main-inputs">
-              <input
+              <Input
                 className="form__input"
                 type="text"
                 value={name}
@@ -56,7 +57,7 @@ const Form = () => {
                 required
                 onChange={(event) => setName(event.target.value)}
               />
-              <input
+              <Input
                 className="form__input"
                 type="number"
                 value={price}

@@ -12,15 +12,12 @@ export const loadSlice = createSlice({
   name: 'loading',
   initialState,
   reducers: {
-    isLoading(state) {
-      state.loading = true;
-    },
-    isLoaded(state) {
-      state.loading = false;
+    setLoading(state, action) {
+      state.loading = action.payload;
     },
   },
 });
 
-export const { isLoading, isLoaded } = loadSlice.actions;
+export const { setLoading } = loadSlice.actions;
 
 export default loadSlice.reducer;

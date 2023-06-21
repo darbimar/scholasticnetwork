@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
 import { hideEditForm, showForm } from '../store/slices/modalSlice';
-import { isLoading } from '../store/slices/loadSlice';
-import { isLoaded } from '../store/slices/loadSlice';
+import { setLoading } from '../store/slices/loadSlice';
 import Item from '../components/Item/Item';
 import Form from '../components/Form/Form';
 import FormEdit from '../components/Form/FormEdit';
@@ -18,10 +17,10 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(isLoading());
+    dispatch(setLoading(true));
 
     setTimeout(() => {
-      dispatch(isLoaded());
+      dispatch(setLoading(false));
     }, 500);
   }, [items]);
 

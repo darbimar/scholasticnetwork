@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { editItem } from '../../store/slices/itemsSlice';
 import { hideEditForm, hideForm } from '../../store/slices/modalSlice';
+import Input from '../Input/Input';
 import item from './../../assets/item.svg';
 import close from './../../assets/close.svg';
 import './Form.scss';
@@ -48,7 +49,7 @@ const FormEdit = () => {
               <img className="item-image" src={item} alt="item" />
             </div>
             <div className="form__main-inputs">
-              <input
+              <Input
                 className="form__input"
                 type="text"
                 value={editName}
@@ -57,7 +58,7 @@ const FormEdit = () => {
                 required
                 onChange={(event) => setEditName(event.target.value)}
               />
-              <input
+              <Input
                 className="form__input"
                 type="number"
                 value={editPrice}
