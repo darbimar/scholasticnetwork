@@ -55,6 +55,8 @@ const FormEdit = () => {
                 value={editName}
                 maxLength={200}
                 placeholder="Name"
+                name="name"
+                id="name"
                 required
                 onChange={(event) => setEditName(event.target.value)}
               />
@@ -64,6 +66,8 @@ const FormEdit = () => {
                 value={editPrice}
                 min="1"
                 placeholder="Price"
+                name="price"
+                id="price"
                 required
                 onChange={(event) => setEditPrice(Number(event.target.value))}
               />

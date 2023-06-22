@@ -6,6 +6,8 @@ type InputProps = {
   maxLength?: number;
   value: string | number | undefined;
   placeholder?: string;
+  name: string;
+  id: string;
   required?: boolean;
   min?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -13,7 +15,14 @@ type InputProps = {
 };
 
 const Input = (props: InputProps) => {
-  return <input {...props}></input>;
+  return (
+    <>
+      <label hidden htmlFor={props.name}>
+        {props.placeholder}
+      </label>
+      <input {...props}></input>
+    </>
+  );
 };
 
 export default Input;

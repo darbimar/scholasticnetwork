@@ -33,6 +33,8 @@ const Search = () => {
         value={newSearch}
         placeholder="Search"
         type="search"
+        name="search"
+        id="search"
         onChange={onInputChange}
       />
     </div>

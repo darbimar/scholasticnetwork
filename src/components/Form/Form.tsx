@@ -54,6 +54,8 @@ const Form = () => {
                 value={name}
                 maxLength={200}
                 placeholder="Name"
+                name="name"
+                id="name"
                 required
                 onChange={(event) => setName(event.target.value)}
               />
@@ -63,6 +65,8 @@ const Form = () => {
                 value={price}
                 min="1"
                 placeholder="Price"
+                name="price"
+                id="price"
                 required
                 onChange={(event) => setPrice(event.target.value)}
               />
