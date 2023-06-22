@@ -6,6 +6,7 @@ import { hideEditForm, hideForm } from '../../store/slices/modalSlice';
 import Input from '../Input/Input';
 import item from './../../assets/item.svg';
 import close from './../../assets/close.svg';
+import Modal from '../Modal/Modal';
 import './Form.scss';
 
 const FormEdit = () => {
@@ -31,17 +32,18 @@ const FormEdit = () => {
     setEditDescription('');
   };
 
-  const closeForm = () => {
+  const handleClose = () => {
     dispatch(hideForm());
     dispatch(hideEditForm());
+    document.body.style.overflow = 'scroll';
   };
 
   return (
-    <div className="form">
-      <div className="content">
+    <Modal onClick={handleClose}>
+      <div className="form" onClick={(e) => e.stopPropagation()}>
         <div className="form__top">
           <div className="form__title">Edit item</div>
-          <img src={close} className="form__close" alt="Close form" onClick={closeForm} />
+          <img src={close} className="form__close" alt="Close form" onClick={handleClose} />
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form__main">
@@ -86,7 +88,7 @@ const FormEdit = () => {
           </button>
         </form>
       </div>
-    </div>
+    </Modal>
   );
 };
 

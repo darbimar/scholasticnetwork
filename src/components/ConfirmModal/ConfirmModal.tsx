@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { deleteItem } from '../../store/slices/itemsSlice';
 import { hideDeleteModal } from '../../store/slices/modalSlice';
+import Modal from '../Modal/Modal';
 import './ConfirmModal.scss';
 
 type ConfirmModalProps = {
@@ -15,9 +16,14 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({ id }) => {
     dispatch(hideDeleteModal());
   };
 
+  const handleClose = () => {
+    dispatch(hideDeleteModal());
+    document.body.style.overflow = 'scroll';
+  };
+
   return (
-    <div className="confirm">
-      <div className="confirm__content">
+    <Modal onClick={handleClose}>
+      <div className="confirm" onClick={(e) => e.stopPropagation()}>
         <div className="confirm__title">Are you sure you want to delete this item?</div>
         <div className="confirm__subtitle">You will not be able to restore it.</div>
         <div className="confirm__buttons">
@@ -32,7 +38,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({ id }) => {
           </button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };
 

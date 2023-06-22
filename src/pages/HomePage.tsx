@@ -27,6 +27,7 @@ const HomePage = () => {
   const openForm = () => {
     dispatch(showForm());
     dispatch(hideEditForm());
+    document.body.style.overflow = 'hidden';
   };
 
   const products = items

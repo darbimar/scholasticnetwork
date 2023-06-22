@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { RootState } from '../store';
 import { correctItem } from '../store/slices/editSlice';
 import { showDeleteModal, showEditForm, showForm } from '../store/slices/modalSlice';

@@ -1,13 +1,12 @@
 @import '../../styles/mixins.scss';
 
 .form {
-  @include flex-center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  width: 416px;
+  height: 479px;
+  padding: 30px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 12px rgba(12, 82, 118, 0.13);
+  border-radius: 6px;
 
   &__top {
     display: flex;
@@ -57,14 +56,5 @@
       height: 180px;
       resize: none;
     }
-  }
-
-  .content {
-    width: 416px;
-    height: 479px;
-    padding: 30px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 12px rgba(12, 82, 118, 0.13);
-    border-radius: 6px;
   }
 }

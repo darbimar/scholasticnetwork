@@ -38,10 +38,12 @@ const Item: React.FC<ItemProps> = ({ id, name, price, description }) => {
     dispatch(showForm());
     dispatch(showEditForm());
     dispatch(correctItem(item));
+    document.body.style.overflow = 'hidden';
   };
 
   const onDelete = () => {
     dispatch(showDeleteModal());
+    document.body.style.overflow = 'hidden';
   };
 
   const link = `/item/${id}`;

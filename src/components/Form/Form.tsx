@@ -5,6 +5,7 @@ import { hideForm } from '../../store/slices/modalSlice';
 import Input from '../Input/Input';
 import item from './../../assets/item.svg';
 import close from './../../assets/close.svg';
+import Modal from '../Modal/Modal';
 import './Form.scss';
 
 const Form = () => {
@@ -30,9 +31,14 @@ const Form = () => {
     setDescription('');
   };
 
+  const handleClose = () => {
+    dispatch(hideForm());
+    document.body.style.overflow = 'scroll';
+  };
+
   return (
-    <div className="form" onClick={() => dispatch(hideForm())}>
-      <div className="content" onClick={(e) => e.stopPropagation()}>
+    <Modal onClick={handleClose}>
+      <div className="form" onClick={(e) => e.stopPropagation()}>
         <div className="form__top">
           <div className="form__title">Create new item</div>
           <img
@@ -85,7 +91,7 @@ const Form = () => {
           </button>
         </form>
       </div>
-    </div>
+    </Modal>
   );
 };
 
