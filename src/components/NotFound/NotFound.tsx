@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import img from './../../assets/product-not-found.jpeg';
 import './NotFound.scss';
 
-const NotFound = () => {
+const NotFound: FC = () => {
   return (
     <div className="not-found">
       <img className="not-found__image" src={img} alt="not found" />

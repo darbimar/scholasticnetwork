@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
 import { hideEditForm, showForm } from '../store/slices/modalSlice';
@@ -8,8 +8,9 @@ import Form from '../components/Form/Form';
 import FormEdit from '../components/Form/FormEdit';
 import Loading from '../components/Loading/Loading';
 import NotFound from '../components/NotFound/NotFound';
+import { ListItem } from '../store/slices/itemsSlice';
 
-const HomePage = () => {
+const HomePage: FC = () => {
   const items = useSelector((state: RootState) => state.item.items);
   const { isShow, isEdit } = useSelector((state: RootState) => state.modal);
   const searchValue = useSelector((state: RootState) => state.search.searchValue);
@@ -32,7 +33,7 @@ const HomePage = () => {
 
   const products = items
     .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase()))
-    .map((item: any) => <Item key={item.id} {...item} />);
+    .map((item: ListItem) => <Item key={item.id} {...item} />);
 
   return (
     <div className="content">

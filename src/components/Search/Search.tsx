@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect } from 'react';
+import { ChangeEvent, FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { setSearchValue } from '../../store/slices/searchSlice';
@@ -7,7 +7,7 @@ import Input from '../Input/Input';
 import img from './../../assets/search.svg';
 import './Search.scss';
 
-const Search = () => {
+const Search: FC = () => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const newSearch = searchParams.get('items') || '';

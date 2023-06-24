@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Search from '../Search/Search';
 import './Header.scss';
 
-const Header = () => {
+const Header: FC = () => {
   const { pathname } = useLocation();
 
   return (

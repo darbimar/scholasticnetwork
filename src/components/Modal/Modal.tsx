@@ -1,6 +1,4 @@
 import React, { FC, MouseEventHandler } from 'react';
-import { useDispatch } from 'react-redux';
-import { hideForm } from '../../store/slices/modalSlice';
 import './Modal.scss';
 
 interface IProps {

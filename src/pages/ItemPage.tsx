@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { RootState } from '../store';
@@ -8,7 +9,7 @@ import ConfirmModal from '../components/ConfirmModal/ConfirmModal';
 import SingleItem from '../components/SingleItem/SingleItem';
 import NotFound from '../components/NotFound/NotFound';
 
-const ItemPage = () => {
+const ItemPage: FC = () => {
   const { isEdit, isDelete } = useSelector((state: RootState) => state.modal);
 
   const items = useSelector((state: RootState) => state.item.items);
@@ -16,7 +17,7 @@ const ItemPage = () => {
 
   const { id } = useParams();
 
-  const item = items.find((obj) => obj.id == id);
+  const item = items.find((obj) => obj.id === id);
 
   const editData = () => {
     dispatch(showForm());

@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteItem } from '../../store/slices/itemsSlice';
 import { hideDeleteModal } from '../../store/slices/modalSlice';
@@ -8,7 +9,7 @@ type ConfirmModalProps = {
   id: string | undefined;
 };
 
-const ConfirmModal: React.FC<ConfirmModalProps> = ({ id }) => {
+const ConfirmModal: FC<ConfirmModalProps> = ({ id }) => {
   const dispatch = useDispatch();
 
   const onDelete = () => {

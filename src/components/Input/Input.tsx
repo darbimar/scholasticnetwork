@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FocusEvent } from 'react';
+import React, { ChangeEvent, FC, FocusEvent } from 'react';
 
 type InputProps = {
   className?: string;
@@ -14,7 +14,7 @@ type InputProps = {
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 };
 
-const Input = (props: InputProps) => {
+const Input: FC<InputProps> = (props) => {
   return (
     <>
       <label hidden htmlFor={props.name}>

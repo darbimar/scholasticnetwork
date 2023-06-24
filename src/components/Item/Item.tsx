@@ -7,6 +7,7 @@ import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import logo from './../../assets/item.svg';
 import bin from './../../assets/bin.svg';
 import './Item.scss';
+import { ListItem } from '../../store/slices/itemsSlice';
 
 type ItemProps = {
   id: string;
@@ -29,7 +30,7 @@ const Item: React.FC<ItemProps> = ({ id, name, price, description }) => {
   }
 
   const editData = () => {
-    const item: any = {
+    const item: ListItem = {
       id,
       name,
       price,

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { editItem } from '../../store/slices/itemsSlice';
@@ -9,15 +9,22 @@ import close from './../../assets/close.svg';
 import Modal from '../Modal/Modal';
 import './Form.scss';
 
-const FormEdit = () => {
+interface Item {
+  id: string;
+  editName: string;
+  editPrice: number | undefined;
+  editDescription: string;
+}
+
+const FormEdit: FC = () => {
   const { id, name, description, price } = useSelector((state: RootState) => state.edit);
-  const [editName, setEditName] = useState(name);
+  const [editName, setEditName] = useState<string>(name);
   const [editPrice, setEditPrice] = useState<number | undefined>(price);
-  const [editDescription, setEditDescription] = useState(description);
+  const [editDescription, setEditDescription] = useState<string>(description);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e: any) => {
-    const item: any = {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const item: Item = {
       id,
       editName,
       editPrice,

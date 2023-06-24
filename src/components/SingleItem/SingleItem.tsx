@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import bin from './../../assets/bin.svg';
 import logo from './../../assets/item.svg';
 
@@ -12,7 +13,7 @@ interface SingleItemProps {
   onDelete: () => void;
 }
 
-const SingleItem: React.FC<SingleItemProps> = ({ item, editData, onDelete }) => {
+const SingleItem: FC<SingleItemProps> = ({ item, editData, onDelete }) => {
   return (
     <div className="container">
       <div className="single-item">

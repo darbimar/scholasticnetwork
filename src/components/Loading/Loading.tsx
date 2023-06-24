@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import './Loading.scss';
 
-const Loading = () => {
+const Loading: FC = () => {
   return (
     <div className="loading">
       <div className="loadingio-spinner-double-ring-00n3prjlfbdo">

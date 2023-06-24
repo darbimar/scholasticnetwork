@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../../store/slices/itemsSlice';
+import { ListItem, addItem } from '../../store/slices/itemsSlice';
 import { hideForm } from '../../store/slices/modalSlice';
 import Input from '../Input/Input';
 import item from './../../assets/item.svg';
@@ -8,16 +8,16 @@ import close from './../../assets/close.svg';
 import Modal from '../Modal/Modal';
 import './Form.scss';
 
-const Form = () => {
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
+const Form: FC = () => {
+  const [name, setName] = useState<string>('');
+  const [price, setPrice] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
   const dispatch = useDispatch();
 
-  const id = Math.floor(Math.random() * 90000) + 10000;
+  const id = String(Math.floor(Math.random() * 90000) + 10000);
 
-  const handleSubmit = (e: any) => {
-    const item: any = {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const item: ListItem = {
       id,
       name,
       price,
